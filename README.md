@@ -32,65 +32,28 @@ Contributions welcome! Open a PR to add/update entries. Keep descriptions factua
 
 ## Table of Contents
 
+- [Sector Overview & Market Dynamics](#sector-overview--market-dynamics)
 - [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
 - [Open-Source GitHub Projects](#open-source-github-projects)
-
 - [How to Contribute](#how-to-contribute)
-
 - [Disclaimer](#disclaimer)
 
+## Sector Overview & Market Dynamics
 
+The global Identity and Access Management (IAM) and directory services market is valued at approximately $20B–$23B in 2024–2025 and is projected to expand to over $42B+ by 2030 at a ~13–15% CAGR. The sector exhibits a moderately concentrated, barbell structure: hyperscale platforms like Microsoft and specialized access giants like Okta command dominant market shares in core directory sync and enterprise SSO, while a competitive, fragmented landscape of point solutions addresses specialized niches including Privileged Access Management (PAM), hybrid IT orchestration, and directory bridging.
 
 ## SaaS/Hosted Platforms
 
-
-
-- **Microsoft Entra Connect Sync**
-
-  **Hybrid identity synchronization** between on-premises AD and Entra ID. **Features**: **Password hash synchronization** (PHS); **pass-through authentication** (PTA); **federation with AD FS**; **device writeback**; **directory extensions** for custom attributes; **declarative provisioning** rules; **prevent accidental deletion**; scheduler for import/sync/export cycles . **Critical note**: Microsoft is **replacing Connect Sync with Cloud Sync**—Connect Sync will be retired once Cloud Sync reaches full feature parity. Cloud Sync uses the Entra provisioning agent instead of the Connect application . **Pricing**: Free with Entra ID; P1/P2 for advanced features. **Free tier**: Yes, core sync free. **Best for**: Microsoft-centric organizations needing hybrid identity—**trade-off**: plan for Cloud Sync migration; Connect Sync is being deprecated.
-
-
-
-- **Okta AD Agent**
-
-  **On-premises agent** for integrating Okta with Active Directory. **Features**: **Delegated authentication**—users authenticate against AD but access Okta-managed apps; **user provisioning and de-provisioning**; **import AD users and groups into Okta**; **password sync**; **group push** and **attribute writeback** . **Pricing**: Requires Okta subscription; agent is free. **Free tier**: Developer edition available. **Best for**: organizations wanting Okta as the identity plane while keeping AD as the credential store—**trade-off**: requires Okta subscription; agent runs on Windows Server.
-
-
-
-- **JumpCloud AD Sync (ADI)**
-
-  **Directory synchronization** between JumpCloud and Active Directory. **Features**: **One-way (AD → JumpCloud)** or **two-way** sync; **configurable sync group** for organizing managed AD groups; **advanced dissociation management**—Remove, Disable, or Retain users when disconnected; **account unlock status sync**; **nested group sync control** (Minimal/Inheritance or Match/Mirroring) . **Pricing**: Included with JumpCloud subscription. **Free tier**: Yes, up to 10 users. **Best for**: JumpCloud users wanting AD integration without full migration—**trade-off**: requires JumpCloud subscription; agent runs on Windows Server.
-
-
-
-- **Freshworks Directory Services (Orch)**
-
-  **Active Directory orchestration** within Freshworks workflows. **Features**: **User management**—create, delete, get, update, disable/enable, reset password, unlock account, move to another OU; **group management**—create, delete, get, check membership; **computer management**—delete, disable, enable, get OU; **object management**—move object by GUID . **Pricing**: Included with Freshworks subscriptions. **Free tier**: Limited. **Best for**: Freshworks customers wanting AD actions within support workflows—**trade-off**: orchestration actions, not continuous directory sync.
-
-
-
-- **Google Cloud Directory Sync (GCDS)**
-
-  **Directory synchronization** from AD/LDAP to Google Workspace. **Pricing**: Free with Google Workspace. **Free tier**: Included with Workspace. **Best for**: Google Workspace organizations syncing users and groups from AD—**trade-off**: sync tool, not a standalone directory; one-way sync.
-
-
-
-- **Ping Identity / ForgeRock**
-
-  **Enterprise identity platform** with AD integration and federation. **Features**: ForgeRock AM supports **identity linking and bulk federation** between IdP and SP; **persistent vs. transient federation**; **ssoadm bulk federation commands** for mapping local to remote user IDs . **Pricing**: Quote-only. **Free tier**: None. **Best for**: regulated enterprises needing federation and directory integration—**trade-off**: requires identity engineering expertise.
-
-
-
-- **OneLogin**
-
-  **Cloud IAM** with AD integration. **Pricing**: Quote-only; tiered by users. **Free tier**: Trial available. **Best for**: mid-market organizations wanting straightforward directory and SSO.
-
-
-
-- **CyberArk Identity**
-
-  **Identity security** with directory integration and privileged access. **Pricing**: Quote-only. **Free tier**: None. **Best for**: enterprises prioritizing privileged access alongside directory sync.
+| Platform | Parent Company / Vendor | Valuation / Market Cap / Revenue | Starting Pricing Tier | Free Tier Limits / Free Trial | Primary Sync & Integration Focus |
+|---|---|---|---|---|---|
+| **Microsoft Entra Connect Sync / Cloud Sync** | Microsoft | $3.1+ Trillion (Market Cap) / $245B+ ARR | **$6.00 / user / month** (Entra ID P1 standalone; included with Microsoft 365 Business Premium / E3 / E5) | **Free tier available**: Entra ID Free tier includes core user/directory synchronization and password hash sync up to 500,000 directory objects; 30-day free trial for P1/P2 (up to 100 licenses). | Hybrid identity sync between on-premises Active Directory and Entra ID (PHS, PTA, Cloud Sync agent). |
+| **Google Cloud Directory Sync (GCDS)** | Alphabet (Google) | $2.1+ Trillion (Market Cap) / $350B+ ARR | **$7.00 / user / month** (Google Workspace Business Starter; GCDS tool is free of charge) | **Free tier available**: Cloud Identity Free tier includes directory management for up to 50 users (requestable increase); 14-day free trial for Google Workspace (up to 10 users). | One-way directory sync from AD/LDAP to Google Workspace / Cloud Identity domains. |
+| **CyberArk Identity** | CyberArk (Palo Alto Networks) | $20.6B–$22.5B (Market Cap) / $1.0B+ ARR | **$2.00 / user / month** (Workforce Identity SSO/MFA baseline tier; quote-based annual enterprise billing) | **Free trial only**: 14-day proof-of-concept (POC) sandbox trial via sales engagement (no permanent free tier). | Privileged access management, adaptive SSO/MFA, and secure directory sync across enterprise infrastructure. |
+| **Okta AD Agent** | Okta | $15.3B–$16.1B (Market Cap) / $2.6B+ ARR | **$6.00 / user / month** (Starter Plan with SSO and Universal Directory; $1,500/year minimum contract spend) | **Free tier & trial**: 30-day full-feature free trial (up to 10 users); permanent Developer Edition free for up to 10 users (deactivates if inactive for 90 days). | Cloud directory plane with on-premises AD delegated authentication, user provisioning, and bi-directional attribute sync. |
+| **Ping Identity / ForgeRock** | Ping Identity (Thoma Bravo) | $5.1B (Combined Acquisition Valuation: $2.8B Ping + $2.3B ForgeRock) / ~$1B ARR | **$3.00 / user / month** (Workforce Essential plan; billed annually, typical enterprise deployment thresholds) | **Free trial only**: 30-day free trial of PingOne cloud platform (requires corporate email; no permanent free tier). | Complex enterprise identity linking, bulk federation (SAML/OIDC), and hybrid directory bridges. |
+| **Freshworks Directory Services (Orch)** | Freshworks | $3.45B–$4.9B (Market Cap) / $700M+ ARR | **$19.00 / agent / month** (Freshservice Starter plan, billed annually; includes 1,000 orchestration transactions/mo) | **Free trial only**: 14-day free trial with unrestricted access to enterprise orchestration features (no credit card required). | Workflow orchestration and automated Active Directory actions (user provisioning, OU moves, password resets) in ITSM pipelines. |
+| **JumpCloud AD Sync (ADI)** | JumpCloud | $2.6B (Series F Valuation) / ~$150M–$200M ARR | **$9.00 / user / month** (Device Management, billed annually) or **$11.00 / user / month** (SSO / Cloud Directory package) | **Free trial only**: 30-day full-featured platform trial with access to ADI sync engine (legacy accounts retain 10 free users/devices). | Bi-directional hybrid directory sync (AD ↔ JumpCloud) with granular dissociation policies (Remove/Disable/Retain). |
+| **OneLogin** | One Identity / Quest Software (Clearlake Capital) | $5.4B (Quest Software Acquisition Valuation) / ~$500M+ ARR | **$3.00 / user / month** (Basic Plan with SSO and core user management; billed annually) | **Free trial only**: 30-day full-featured free trial (no credit card required; no permanent free tier). | Cloud IAM with Active Directory integration, automated SCIM provisioning, and multi-directory federation. |
 
 
 
